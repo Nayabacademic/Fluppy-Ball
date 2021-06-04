@@ -137,6 +137,21 @@ function distance(x1, y1, x2, y2) {
 var camVelocity = 2;
 var gameEnd = false;
 var add = 0
+
+
+let jumpSound;
+let coinSound;
+let hitSound;
+let backSound;
+let clickSound;
+let magnetSound;
+
+jumpSound = new sound("audio/jump.mp3", false, 1)
+coinSound = new sound("audio/coin.mp3", false, 1)
+hitSound = new sound("audio/hit.ogg", false)
+clickSound = new sound("audio/btnClick.ogg", false, 1)
+backSound = new sound("audio/backLoop.wav", true, 0.28)
+magnetSound = new sound("audio/magnet.ogg", false, 1)
  
 // OBJECTS_________________________________\\
 
@@ -553,12 +568,6 @@ let player;
 let obstacles;
 let coins;
 let magnet;
-let jumpSound;
-let coinSound;
-let hitSound;
-let backSound;
-let clickSound;
-let magnetSound;
 function init() {
 obstacles = [];
 coins = [];
@@ -571,12 +580,6 @@ let mY = randomIntFromRange(200, canvas.height - 200)
 let mR = 5
 player = new Player(pX, pY, pR);
 magnet = new Magnet(mX, mY, mR)
-jumpSound = new sound("audio/jump.mp3", false, 1)
-coinSound = new sound("audio/coin.mp3", false, 1)
-hitSound = new sound("audio/hit.ogg", false)
-clickSound = new sound("audio/btnClick.ogg", false, 1)
-backSound = new sound("audio/backLoop.wav", true, 0.28)
-magnetSound = new sound("audio/magnet.ogg", false, 1)
 }
 
 
