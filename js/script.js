@@ -52,6 +52,7 @@ var sendD = false;
 
 showS.onclick = function(){
 boardCon.style.display = "flex"
+clickSound.play()
 }
 
 
@@ -151,8 +152,8 @@ class Player {
     this.shadowV = 0;
     this.hasmagnet = false;
     this.shadCol = "#F92782"
-    this.stop = false;
     this.score = 0;
+    this.firstFrame = 0;
   }
   
  update() {
@@ -165,6 +166,7 @@ class Player {
   
  if(this.y > canvas.height- this.radius ||  this.y < 0+ this.radius){
  			gameEnd = true;
+ 		
  }
  
 if(gameEnd == false){
@@ -197,6 +199,8 @@ if(gameEnd == false){
    		this.score += 30
    		this.shadowV = 50
    		this.shadCol = "#28DF28"
+   //		coinSound.stop();
+   		coinSound.play()
    }
    
  }
@@ -209,20 +213,15 @@ if(gameEnd == false){
  		 this.shadowV = 50
  		 this.shadCol = "#F9ED69"
  		 magDur()
+ 		 magnetSound.play();
  }
  
 
-if (gameEnd == true) {
-	this.stop = true;
-}
-
-
-if (this.stop == true) {
-		menu.style.display = "flex"
-//  sdis.style.display = "none"
-  
-		
-  this.stop = false;
+if (gameEnd == true && this.firstFrame == 0) {
+	this.firstFrame++;
+	hitSound.play()
+	backSound.stop()
+	menu.style.display = "flex"
 }
  
   this.draw()
@@ -359,21 +358,41 @@ class Magnet{
 			ctx.closePath()
 	}
 }
+    
+ function sound(src, loopV, vol) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    if (isNaN(vol)) { 
+      vol = .1; 
+    } 
+    this.sound.volume = parseFloat(vol)
+    this.sound.loop = loopV;
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+      }
+    }
+    
 
 //__FUNCTIONS______________________________\\
 
 canvas.onclick = function(){
-//if(gameEnd == false){
   		player.jumping = true;
     player.velY = 6;
     player.shadCol = "#F92782"
     player.shadowV = 18
-  //  }
+    jumpSound.play()
   }
   
   
 submit.onclick = function(){
-  
+  clickSound.play()
  
  	var data = {
   	   name: name.value,
@@ -426,14 +445,15 @@ else{
 
 backMenu.onclick = function(){
 		boardCon.style.display = "none";
+		clickSound.play()
 }
 
 
   start.onclick = function(){
+  clickSound.play()
      sendD = false;
      gameEnd = false;
      player.y = canvas.height/2
-  //   submit.style.display = "block"
      player.score = 0
      	coins = []
      obstacles = []
@@ -443,8 +463,11 @@ backMenu.onclick = function(){
      player.velY = 1;
   			menu.style.display = "none";
   			sdis.style.display = "flex"
+  			player.firstFrame = 0
+  			backSound.play();
   }
   play.onclick = function(){
+  clickSound.play()
      sendD = false;
      gameEnd = false;
      player.y = canvas.height/2
@@ -457,6 +480,7 @@ backMenu.onclick = function(){
      player.velY = 1;
   			home.style.display = "none";
   			sdis.style.display = "flex"
+  			backSound.play();
   }
   
  function magHan(){
@@ -480,6 +504,7 @@ let hasNum = /\d/.test(string);
   	return false;
   }
  }
+ 
   
 function spawnOb() {
 
@@ -514,6 +539,12 @@ let player;
 let obstacles;
 let coins;
 let magnet;
+let jumpSound;
+let coinSound;
+let hitSound;
+let backSound;
+let clickSound;
+let magnetSound;
 function init() {
 obstacles = [];
 coins = [];
@@ -526,6 +557,12 @@ let mY = randomIntFromRange(200, canvas.height - 200)
 let mR = 5
 player = new Player(pX, pY, pR);
 magnet = new Magnet(mX, mY, mR)
+jumpSound = new sound("audio/jump.mp3", false, 1)
+coinSound = new sound("audio/coin.mp3", false, 1)
+hitSound = new sound("audio/hit.ogg", false)
+clickSound = new sound("audio/btnClick.ogg", false, 1)
+backSound = new sound("audio/backLoop.wav", true, 0.18)
+magnetSound = new sound("audio/magnet.ogg", false, 1)
 }
 
 
