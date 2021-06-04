@@ -150,7 +150,7 @@ jumpSound = new sound("audio/jump.mp3", false, 1)
 coinSound = new sound("audio/coin.mp3", false, 1)
 hitSound = new sound("audio/hit.ogg", false)
 clickSound = new sound("audio/btnClick.ogg", false, 1)
-backSound = new sound("audio/backLoop.wav", true, 0.28)
+backSound = new sound("audio/backLoop.wav", true, 1)
 magnetSound = new sound("audio/magnet.ogg", false, 1)
  
 // OBJECTS_________________________________\\
