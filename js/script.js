@@ -19,6 +19,7 @@ const backMenu = document.getElementById("backMenu")
 canvas.width = 380;
 canvas.height = 591;
 
+
 var screenW = window.innerWidth/canvas.width
 var screenH = window.innerHeight/canvas.height
 
@@ -45,8 +46,9 @@ firebase.initializeApp(config)
 var database = firebase.database();
 var ref = database.ref("scores");
 var totalG = 0;
-var maxData = 50;
+var maxData = 25;
 var dataArr = []
+var sendD = false;
 
 showS.onclick = function(){
 boardCon.style.display = "flex"
@@ -378,6 +380,9 @@ submit.onclick = function(){
   	   score: player.score
     }
     
+if (sendD == false) {
+
+sendD = true;
        
  if (checkName(name.value) == true) {
  
@@ -389,6 +394,8 @@ submit.onclick = function(){
    else if(dataArr[dataArr.length - 1].point < data.score){
    console.log("hlo")
    
+   submit.style.display = "none"
+   
    	ref.push(data)
    	
    	ref = database.ref("scores");
@@ -396,8 +403,6 @@ submit.onclick = function(){
    	let docid = dataArr[dataArr.length - 1].key
    	
    	database.ref("scores").child(docid).remove();
-   	
-   	submit.style.display = "none"
    	
    }
    
@@ -411,8 +416,12 @@ submit.onclick = function(){
   else{
   		alert("YOUR NAME IS NOT VALID")
   }
-       
-   
+}
+
+else{
+  		alert("YOU CAN NOT SUBMIT WITH SAME NAME AND SCORE AT A SAME TIME")
+  }
+
 }//click
 
 backMenu.onclick = function(){
@@ -421,9 +430,10 @@ backMenu.onclick = function(){
 
 
   start.onclick = function(){
+     sendD = false;
      gameEnd = false;
      player.y = canvas.height/2
-     submit.style.display = "block"
+  //   submit.style.display = "block"
      player.score = 0
      	coins = []
      obstacles = []
@@ -435,6 +445,7 @@ backMenu.onclick = function(){
   			sdis.style.display = "flex"
   }
   play.onclick = function(){
+     sendD = false;
      gameEnd = false;
      player.y = canvas.height/2
      player.score = 0
@@ -472,7 +483,7 @@ let hasNum = /\d/.test(string);
   
 function spawnOb() {
 
-let oS = randomIntFromRange(70, 120);
+let oS = randomIntFromRange(80, 140);
 let oX = canvas.width + canvas.width/2
 
 let oW = randomIntFromRange(150, 380);
@@ -494,7 +505,7 @@ coins.push(new Coin(cox, coy, cor))
 
 	
 if(gameEnd == false) {
- setInterval(spawnOb, 1500);	
+ setInterval(spawnOb, 1700);	
 }
 
 
