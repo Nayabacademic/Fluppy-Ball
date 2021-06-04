@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    				<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <title>Fluppy Bird</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+          <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+    				
+     <canvas id="canvas"></canvas>
+     <div id="sdis">0</div>
+     
+      <div id="home">
+      					<div id="play"></div>
+       	<div id="infoCon">
+       			
+       		<p>A <strong>fluppy</strong> ball on his journey</p>
+       		<p><strong>Tap</strong> to jump</p>
+       		<p id = "pinkL">Be careful from <strong>pink-pointy</strong> stuffs</p>
+       		<pv id="greenL">Collect <strong>green</strong> gems on your way for earning more score</p>
+       		<p id="yellowL">Collect <strong>yellow</strong> stuffs for attracting gems </p>
+       		<p>Be sure to check others score on the scoreboard!</p>
+       		<p>Made with <span color ="#F92782">♥</span> by NAYAB/ACADEMIC</p>
+       	</div>
+     </div>
+     
+     <div id="menu">
+       	<div id="start">TAP TO CONTINUE</div>
+       	<input type="text" id="name" placeholder="Name.. ( 3 < letters and 8 > letters/ no numbers)">
+       <button id="submitS">SUBMIT SCORE</button>
+       <button id="showScore">SCORE BOARD</button>
+     </div>
+     <div id="boardCon">
+       <div id="listCon">
+       		<p id="scoreLT">TOP 50 SCORES</p>
+        <ul id="scoreList">
+        			
+        </ul>
+        </div>
+        <button id="backMenu">BACK</button>
+     </div>
+        
+        
+        <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+       
+
+ <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-database.js"></script>  
+
+        
+        <script src="js/script.js"></script>
+        
+    </body>
+</html>
+
