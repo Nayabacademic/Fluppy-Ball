@@ -379,6 +379,21 @@ class Magnet{
       }
     }
     
+ 
+function disToast(word){
+ 
+ Toastify({
+  text: word,
+  duration: 3000,
+  close: false,
+  gravity: "top", 
+  position: "left", 
+  backgroundColor: "#F92782",
+  stopOnFocus: true, 
+}).showToast();
+
+}
+
 
 //__FUNCTIONS______________________________\\
 
@@ -400,10 +415,11 @@ submit.onclick = function(){
     }
     
 if (sendD == false) {
-
-sendD = true;
+  
        
  if (checkName(name.value) == true) {
+ 
+  sendD = true;
  
   console.log(data.score)
   
@@ -412,8 +428,6 @@ sendD = true;
     }
    else if(dataArr[dataArr.length - 1].point < data.score){
    console.log("hlo")
-   
-   submit.style.display = "none"
    
    	ref.push(data)
    	
@@ -426,19 +440,19 @@ sendD = true;
    }
    
   else{
-  		alert("YOUR SCORE IS NOT SUFFICIENT")
+  		disToast("YOUR SCORE IS NOT SUFFICIENT")
   }
   
   
  }
 
   else{
-  		alert("YOUR NAME IS NOT VALID")
+  		disToast("PLEASE ENTER A VALID NAME")
   }
 }
 
 else{
-  		alert("YOU CAN NOT SUBMIT WITH SAME NAME AND SCORE AT A SAME TIME")
+  		disToast("YOUR NAME AND SCORE IS SAME")
   }
 
 }//click
@@ -561,7 +575,7 @@ jumpSound = new sound("audio/jump.mp3", false, 1)
 coinSound = new sound("audio/coin.mp3", false, 1)
 hitSound = new sound("audio/hit.ogg", false)
 clickSound = new sound("audio/btnClick.ogg", false, 1)
-backSound = new sound("audio/backLoop.wav", true, 0.38)
+backSound = new sound("audio/backLoop.wav", true, 0.28)
 magnetSound = new sound("audio/magnet.ogg", false, 1)
 }
 
