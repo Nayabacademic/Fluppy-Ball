@@ -10,12 +10,15 @@ const play = document.getElementById('play')
 const menu = document.getElementById('menu')
 const home = document.getElementById('home')
 const submit = document.getElementById('submitS')
+const loadPage = document.getElementById('loadPage')
 const name = document.getElementById('name')
 const showS = document.getElementById("showScore")
 const boardCon = document.getElementById("boardCon")
 const scoreList = document.getElementById("scoreList")
 const backMenu = document.getElementById("backMenu")
 
+loadPage.style.display = "none"
+play.style.display = "block"
 canvas.width = 380;
 canvas.height = 591;
 
@@ -26,6 +29,10 @@ var screenH = window.innerHeight/canvas.height
 
 canvas.style.width = canvas.width * screenW + "px"
 canvas.style.height = canvas.height * screenH +"px"
+
+//AUDIO_________\\
+ 
+
 
 //FIREBASE___________________\\
 
