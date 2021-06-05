@@ -3,7 +3,11 @@ body {
     padding:0px;
     touch-action: manipulation;
     font-family: 'Ubuntu', sans-serif;
+  background: #1B1C22;
+  width:100%;
+  height:100vh;
 }
+
 #canvas{
     background-color:black;
     touch-action: manipulation;
@@ -20,6 +24,63 @@ body {
 	justify-content: center;
 	z-index:1;
 }
+
+
+#loadPage {
+  position: absolute;
+  top:0px;
+  left:0px;
+  z-index : 4;
+  background-color:#1B1C22;
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+}
+
+#loadText {
+  color: #F92782;
+  display: inline-block;
+  margin-left: 2vw;
+}
+
+#bounceball {
+  position: relative;
+  display: inline-block;
+  height: 37px;
+  width: 5vw;
+  }
+#bounceball::before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    background-color: white;
+    transform-origin: 50%;
+    animation: bounce 500ms alternate infinite ease;
+  }
+  
+  @keyframes bounce {
+  0% {
+    top: 30px;
+    height: 2.5vw;
+    border-radius: 60px 60px 20px 20px;
+    transform: scaleX(2);
+  }
+  35% {
+    height: 5vw;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+  100% {
+    top: 0;
+  }
+}
+
 #menu{
    position:absolute;
    top:0px;
@@ -79,6 +140,7 @@ body {
 	border-radius: 1vw;
 	border:none;
 	transition: .7s;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.12), 0 4px 4px rgba(0,0,0,0.12), 0 8px 8px rgba(0,0,0,0.12), 0 16px 16px rgba(0,0,0,0.12);
 }
 #boardCon{
  position:absolute;
@@ -142,20 +204,14 @@ list-style: none;
 		font-size:3vw;
 }
 
-
-body {
-  background: #F92782;
-  width:100%;
-  height:100vh;
-}
-
 #play {
+  
   width: 100px;
   height: 100px;
   background: radial-gradient( rgba(255, 0, 128, 0.8) 60%, rgba(255, 255, 255, 1) 62%);
   border-radius: 50%;
   position: relative;
-  display: block;
+  display: none;
   margin: 100px auto;
   box-shadow: 0px 0px 25px 3px rgba(255, 0, 128, 0.8);
   z-index:1;
