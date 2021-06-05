@@ -27,10 +27,6 @@ var screenH = window.innerHeight/canvas.height
 canvas.style.width = canvas.width * screenW + "px"
 canvas.style.height = canvas.height * screenH +"px"
 
-//AUDIO_________\\
- 
-
-
 //FIREBASE___________________\\
 
 var config = {
