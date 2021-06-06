@@ -456,6 +456,7 @@ backMenu.onclick = function(){
 
   start.onclick = function(){
   clickSound.play()
+      player.jumping = false;
      sendD = false;
      gameEnd = false;
      player.y = canvas.height/2
