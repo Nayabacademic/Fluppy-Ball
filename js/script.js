@@ -53,7 +53,7 @@ firebase.initializeApp(config)
 var database = firebase.database();
 var ref = database.ref("scores");
 var totalG = 0;
-var maxData = 25;
+var maxData = 50;
 var dataArr = []
 var sendD = false;
 
